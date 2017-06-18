@@ -8,3 +8,6 @@ sourceGenerators in Test += Def.task {
   IO.write(file, """object amm extends App { ammonite.Main().run() }""")
   Seq(file)
 }.taskValue
+
+// TODO: notsure if coursier related or not https://stackoverflow.com/a/42211230
+resolvers += "JBoss" at "https://repository.jboss.org/"

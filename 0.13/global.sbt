@@ -11,3 +11,5 @@ sourceGenerators in Test += Def.task {
 
 // TODO: notsure if coursier related or not https://stackoverflow.com/a/42211230
 resolvers += "JBoss" at "https://repository.jboss.org/"
+
+cancelable in Global := true

@@ -5,9 +5,20 @@ libraryDependencies += "com.lihaoyi" % "ammonite" % "1.0.2" % "test" cross Cross
 
 sourceGenerators in Test += Def.task {
   val file = (sourceManaged in Test).value / "amm.scala"
-  IO.write(file, """object amm extends App { ammonite.Main().run() }""")
+  IO.write(file, """object amm extends App { ammonite.Main.main(args) }""")
   Seq(file)
 }.taskValue
+
+// Optional, required for the `source` command to work
+(fullClasspath in Test) ++= {
+  (updateClassifiers in Test).value
+    .configurations
+    .find(_.configuration == Test.name)
+    .get
+    .modules
+    .flatMap(_.artifacts)
+    .collect{case (a, f) if a.classifier == Some("sources") => f}
+}
 
 // TODO: notsure if coursier related or not https://stackoverflow.com/a/42211230
 resolvers += "JBoss" at "https://repository.jboss.org/"

@@ -1,5 +1,5 @@
 target/
-/boot/
-/preloaded/
+boot/
+preloaded/
 staging/
 zinc/

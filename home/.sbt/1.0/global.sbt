@@ -1,4 +1,4 @@
-libraryDependencies += "com.lihaoyi" % "ammonite" % "1.0.3-34-24e8714" % "test" cross CrossVersion.full
+libraryDependencies += "com.lihaoyi" % "ammonite" % "1.0.5" % "test" cross CrossVersion.full
 
 sourceGenerators in Test += Def.task {
   val file = (sourceManaged in Test).value / "amm.scala"
